@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Reading Test</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <audio id="audio" src="assets/audio/sounds.mp3"></audio>
+        <div class="container">
+            <header class="row">
+                <div class="col-12 mt-4">
+                    <h5 class="title yellow text-center">Reading Test</h5>
+                    <div id="help" class="help text-center text-green fs-4 my-2 ">
+                        <img src="assets/img/us.png" type="button" data-bs-toggle="modal" data-bs-target="#modal-en">
+                        <img src="assets/img/thai.png" type="button" data-bs-toggle="modal" data-bs-target="#modal-thai">
+                    </div>
+                    <h4 id="subtitle" class="subtitle text-green d-none my-3 text-center">Lesson complete <button class="btn btn-info btn-sm" onclick="window.location.reload()">Reset</button></h4>
+                </div>
+            </header>
+            <div class="container content">
+                <div class="row border border-4 border-orange p-3">
+                  <div class="col-12 col-sm-6 col-md-6 left-side"> <!-- left-side -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">paw</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w1" src="assets/img/speaker.svg" type="button" onclick="originalSound('w1')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">claw</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w2" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w2')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">dawn</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w3" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w3')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">draw</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w4" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w4')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">next</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w5" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w5')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                  </div><!-- end colum leftside -->
+                  <div class="col-12 col-sm-6 col-md-6 right-side"> <!-- right-side -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">saw</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w6" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w6')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">pawn</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w7" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w7')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">awe</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w8" src="assets/img/speaker.svg" type="button"
+                        onclick="originalSound('w8')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">awed</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w9" src="assets/img/speaker.svg" type="button" onclick="originalSound('w9')">
+                      </div>
+                    </div> <!-- end row g-0 -->
+                    <div class="row g-0">
+                      <div class="col-6 ">
+                        <h1 id="">gothi</h1>
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/mic.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img src="assets/img/audio.svg" type="button">
+                      </div>
+                      <div class="col-2 ">
+                        <img id="w10" src="assets/img/speaker.svg" type="button" 
+                        onclick="originalSound('w10')">
+                      </div>
+                    </div> <!-- end row -->
+                  </div> <!-- end column rightside -->
+                </div> <!-- end row -->
+            </div>
+        </div> <!-- end container -->
+
+      <!-- *******************Modal 1*****************-->
+      <div class="modal fade" id="modal-en" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="stopVideo('video')"></button>  
+            <div class="modal-body text-dark pt-4">
+                <h5 class="text-center mt-3"><u>Help</u></h5>
+                <p class="text-left mt-2">The most difficult part of English Language is  Reading, therefore learning English become a life time project; our method makes it easy, fun and comprehensive.</p>
+              <ol class="list-group list-group-numbered list-group-flush">
+                <li class="list-group-item d-flex align-items-start my-2">
+                  <div class="mb-3">Try reading these words first.
+                  </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start my-2">
+                  <div class="mb-3">After that, press the button and read the rules of reading.
+                  </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start my-2">
+                  <div class="mb-3">Compare the reading before reading the rules and after reading the rules. You will understand how GATE's teaching methods are.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ********************modal 2 (modal-info)******************** -->
+      <div class="modal fade" id="modal-thai" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body text-dark pt-4">
+                <h5 class="text-center mt-3"><u>ช่วยด้วย</u></h5>
+                <p class="text-left mt-2">ส่วนที่ยากที่สุดของภาษาอังกฤษคือการอ่าน ดังนั้นการเรียนภาษาอังกฤษจึงกลายเป็นโครงงานตลอดชีวิต วิธีการของเราทำให้ง่าย สนุก และครอบคลุม</p>
+              <ol class="list-group list-group-numbered list-group-flush">
+                <li class="list-group-item d-flex align-items-start my-2">
+                  <div class="mb-3">ลองอ่านคำเหล่านี้ก่อน
+                  </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start my-2">
+                  <div class="mb-3">หลังจากนั้นกดปุ่มและอ่านกฎในการอ่าน
+                  </div>
+                </li>
+                <li class="list-group-item d-flex align-items-start my-2">
+                  <div class="mb-3">เปรียบเทียบการอ่านก่อนอ่านกฎและหลังการอ่านกฎ คุณจะเข้าใจวิธีการสอนของ GATE ว่าเป็นอย่างไร</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/functions.js"></script>
+  </body>
+</html>
