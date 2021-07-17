@@ -1,135 +1,124 @@
-var tableA=['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10','a11','a12','a13','a14','a15','a16','a17','a18','a19','a20','a21','a22','a23','a24','a25','a26','a27','a28','a29','a30'];
-var tableB=['b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','b11','b12','b13','b14','b15','b16','b17','b18','b19'];
-var words=['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10'];
-var i=0;
+var words=['word1','word2','word3','word4','word5','word6','word7','word8','word9','word10'];
+var mic=['mic1','mic2','mic3','mic4','mic5','mic6','mic7','mic8','mic9','mic10'];
+var sound=['sound1','sound2','sound3','sound4','sound5','sound6','sound7','sound8','sound9','sound10'];
+var audio=['audio1','audio2','audio3','audio4','audio5','audio6','audio7','audio8','audio9','audio10'];
 
-if(i==0){
-  makeActive(tableA[i]);
-}
+i=0;
+
+reset();
+start();
 
 function main(id) {
-	playSound(id);
-	moveToFly(id);
-	setTimeout(function(){
-	    resetLetterPosition(id); // move letter to original position
-	}, 1000);
+	console.log(id);
+	userSound();
 }
 
-function resetLetterPosition(id) {
-	var letter = document.getElementById(id);
-
-    if (tableA[i]==id) {
-    	resultDot.classList.remove('visible');
-    	resultDot.classList.add('invisible');
-    	resultLeft.innerHTML=letter.innerHTML;
-    	resultLeft.classList.remove('invisible');
-    	resultLeft.classList.add('visible');
-    	makeInactive(id); // table a, current letter inactive
-    	showJoinLetters();
-    	rePlay(resultLeft.id,id);
-    	makeActive(tableB[j]);
-		}
-	if (tableB[j]==id) {
-
-		resultRight.innerHTML=letter.innerHTML;
-		resultRight.classList.remove('invisible');
-		resultRight.classList.add('visible');
-		makeInactive(id); // table b, current letter inactive
-		rePlay(resultRight.id,id);
-		sectionEnable();
-		showJoinLetters();
-		displayWords();
-		displaySentence();
-	}
+function userSound(){
+	active(sound[i]);
+	addPlaySound(sound[i]);
 }
 
-
-function next(){
-	playSound('next');
-	j++; // increment for next element in right table
-	l++; // increment for next joined letters
-	w++; // increment for next words 
-	s++; // increment for next sentence 
-	
-	if (j==tableB.length) {
-		j=0;
-		i++;
-		if (i==tableA.length) {
-			// lesson completed
-			var help = document.getElementById('help');
-			var subtitle = document.getElementById('subtitle');
-			help.classList.add('d-none'); 
-			subtitle.classList.remove('d-none','invisible');
-			resetTable(tableA); // reset table A;
-			resetTable(tableB);  // reset table B;
-		}
-		else{
-			makeActive(tableA[i]); // table A next letter will be active
-			resetTable(tableB); // reset table B;
-		}
-	    
-	}
-	resultLeft.classList.remove('visible');
-  resultLeft.classList.add('invisible');
-  resultRight.classList.remove('visible');
-  resultRight.classList.add('invisible');
-  sectionDisable();
-  makeActive(tableA[i]);
-
+function addPlaySound(id){
+	var sound = document.getElementById(id);
+	var att = document.createAttribute("onclick");
+	att.value = "playSound('"+id+"')";
+	sound.setAttributeNode(att);
 }
-
-
 
 // Function for character play sound
 function playSound(id) {
-	var audio = document.getElementById('audio');	
-	if (words[w]==id) {
-		audio.src = 'assets/audio/words/'+id+'.mp3';
-		audio.play();
-	}
+	var audio = document.getElementById('audio');
+	audio.src = 'assets/audio/userSounds/'+id+'.mp3';
+	audio.play();
+	next();
 }
 
-function originalSound(id) {
+function next(){
+	makeInactive(words[i]);
+	i++;
+	if (i<10) {
+		makeActive(words[i]);
+		addMainFunc(mic[i]);
+		active(mic[i]);
+	}
+	else{
+		originalAudio();
+	}
+	
+}
+
+function playOriginalAudio(id) {
 	var audio = document.getElementById('audio');	
-	audio.src = 'assets/audio/words/'+id+'.mp3';
-	audio.play();
+		audio.src = 'assets/audio/originalSounds/'+id+'.mp3';
+		audio.play();
+}
+
+
+
+
+function addMainFunc(id) {
+	var mic = document.getElementById(id);
+	var att = document.createAttribute("onclick");
+	att.value = "main('"+id+"')";
+	mic.setAttributeNode(att);
 }
 
 function makeActive(id){
 	var h1 = document.getElementById(id);
-	var att = document.createAttribute("onclick");
-	att.value = "main('"+id+"')";
-	h1.setAttributeNode(att);
-	h1.classList.remove('invisible');
-	h1.classList.add('text-green','pointer','visible');
-	subTag = h1.getElementsByTagName('sub')[0];
-	subTag.classList.add('text-white');
+	h1.classList.add('text-green');
 }
 
 function makeInactive(id){
-	var letter = document.getElementById(id);
-	letter.classList.remove('visible');
-  letter.classList.add('invisible'); 
-  letter.removeAttribute('style');
-  letter.classList.remove('pointer');
-  letter.removeAttribute("onclick");
+	var h1 = document.getElementById(id);
+	h1.classList.remove('text-green');
+	h1.classList.add('text-white');
 }
 
-function resetTable(table){
-	for (var i = 0; i < table.length; i++) {
-		var reset = document.getElementById(table[i]);
-		subTag = reset.getElementsByTagName('sub')[0];
-		subTag.classList.remove('text-white');
-		reset.classList.remove('invisible','text-green');
-		reset.classList.add('visible',);
+function show(id){
+	var item = document.getElementById(id);
+	item.classList.remove('invisible');
+	item.classList.add('visible');
+}
+function hide(id){
+	var item = document.getElementById(id);
+	item.classList.add('invisible');
+}
+function active(id){
+	var item = document.getElementById(id);
+	item.style.filter= 'grayscale(0%)';
+	item.classList.add('pointer');
+}
+function inactive(id){
+	var item = document.getElementById(id);
+	item.style.filter= 'grayscale(100%)';
+	item.classList.remove('pointer');
+}
+
+function start() {
+	if(i==0){
+	  makeActive(words[i]);
+	  addMainFunc(mic[i]);
+	  active(mic[i]);
 	}
-	
 }
 
-// function for stop video on close modal
-function stopVideo(video){
-	var video = document.getElementById(video);
-	video.pause();
+function originalAudio(){
+	for (var i = 0; i < audio.length; i++) {
+	  	show(audio[i]);
+	}
+	var help = document.getElementById('help');
+	var subtitle = document.getElementById('subtitle');
+	help.classList.add('d-none');
+	subtitle.classList.remove('d-none');
 }
+
+function reset(){
+	for (var i = 0; i < audio.length; i++) {
+	  	inactive(mic[i]);
+	  	inactive(sound[i]);
+	  	hide(audio[i]);
+	}
+}
+
 
 

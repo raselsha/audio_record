@@ -13,16 +13,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
+
     <audio id="audio" src="assets/audio/sounds.mp3"></audio>
         <div class="container">
             <header class="row">
                 <div class="col-12 mt-4">
                     <h5 class="title yellow text-center">Reading Test</h5>
                     <div id="help" class="help text-center text-green fs-4 my-2 ">
-                        <img src="assets/img/us.png" type="button" data-bs-toggle="modal" data-bs-target="#modal-en">
-                        <img src="assets/img/thai.png" type="button" data-bs-toggle="modal" data-bs-target="#modal-thai">
+                        <img src="assets/img/us.png"  data-bs-toggle="modal" data-bs-target="#modal-en" class="pointer">
+                        <img src="assets/img/thai.png"  data-bs-toggle="modal" data-bs-target="#modal-thai" class="pointer">
                     </div>
-                    <h4 id="subtitle" class="subtitle text-green d-none my-3 text-center">Lesson complete <button class="btn btn-info btn-sm" onclick="window.location.reload()">Reset</button></h4>
+                    <h4 id="subtitle" class="subtitle text-green d-none my-3 text-center">Lesson complete <button class="btn btn-info btn-sm" class="pointer" onclick="window.location.reload()">Reset</button></h4>
                 </div>
             </header>
             <div class="container content">
@@ -30,152 +31,152 @@
                   <div class="col-12 col-sm-6 col-md-6 left-side"> <!-- left-side -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">paw</h1>
+                        <h1 id="word1">paw</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic1" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound1" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w1" src="assets/img/speaker.svg" type="button" onclick="originalSound('w1')">
+                        <img  id="audio1" src="assets/img/speaker.svg"  class="pointer" onclick="playOriginalAudio('audio1')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">claw</h1>
+                        <h1 id="word2">claw</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic2" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound2" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w2" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w2')">
+                        <img  id="audio2" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio2')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">dawn</h1>
+                        <h1 id="word3">dawn</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic3" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound3" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w3" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w3')">
+                        <img  id="audio3" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio3')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">draw</h1>
+                        <h1 id="word4">draw</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic4" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound4" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w4" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w4')">
+                        <img  id="audio4" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio4')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">next</h1>
+                        <h1 id="word5">next</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic5" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound5" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w5" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w5')">
+                        <img  id="audio5" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio5')">
                       </div>
                     </div> <!-- end row g-0 -->
                   </div><!-- end colum leftside -->
                   <div class="col-12 col-sm-6 col-md-6 right-side"> <!-- right-side -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">saw</h1>
+                        <h1 id="word6">saw</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic6" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound6" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w6" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w6')">
+                        <img  id="audio6" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio6')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">pawn</h1>
+                        <h1 id="word7">pawn</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic7" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound7" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w7" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w7')">
+                        <img  id="audio7" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio7')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">awe</h1>
+                        <h1 id="word8">awe</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic8" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound8" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w8" src="assets/img/speaker.svg" type="button"
-                        onclick="originalSound('w8')">
+                        <img  id="audio8" src="assets/img/speaker.svg" 
+                        class="pointer" onclick="playOriginalAudio('audio8')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">awed</h1>
+                        <h1 id="word9">awed</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic9" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound9" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w9" src="assets/img/speaker.svg" type="button" onclick="originalSound('w9')">
+                        <img  id="audio9" src="assets/img/speaker.svg"  class="pointer" onclick="playOriginalAudio('audio9')">
                       </div>
                     </div> <!-- end row g-0 -->
                     <div class="row g-0">
                       <div class="col-6 ">
-                        <h1 id="">gothi</h1>
+                        <h1 id="word10">gothi</h1>
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/mic.svg" type="button">
+                        <img id="mic10" src="assets/img/mic.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img src="assets/img/audio.svg" type="button">
+                        <img id="sound10" src="assets/img/audio.svg" >
                       </div>
                       <div class="col-2 ">
-                        <img id="w10" src="assets/img/speaker.svg" type="button" 
-                        onclick="originalSound('w10')">
+                        <img  id="audio10" src="assets/img/speaker.svg"  
+                        class="pointer" onclick="playOriginalAudio('audio10')">
                       </div>
                     </div> <!-- end row -->
                   </div> <!-- end column rightside -->
@@ -187,7 +188,7 @@
       <div class="modal fade" id="modal-en" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="stopVideo('video')"></button>  
+            <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close" class="pointer" onclick="stopVideo('video')"></button>  
             <div class="modal-body text-dark pt-4">
                 <h5 class="text-center mt-3"><u>Help</u></h5>
                 <p class="text-left mt-2">The most difficult part of English Language is  Reading, therefore learning English become a life time project; our method makes it easy, fun and comprehensive.</p>
@@ -212,7 +213,7 @@
       <div class="modal fade" id="modal-thai" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body text-dark pt-4">
                 <h5 class="text-center mt-3"><u>ช่วยด้วย</u></h5>
                 <p class="text-left mt-2">ส่วนที่ยากที่สุดของภาษาอังกฤษคือการอ่าน ดังนั้นการเรียนภาษาอังกฤษจึงกลายเป็นโครงงานตลอดชีวิต วิธีการของเราทำให้ง่าย สนุก และครอบคลุม</p>
