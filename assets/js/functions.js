@@ -3,13 +3,11 @@ var mic=['mic1','mic2','mic3','mic4','mic5','mic6','mic7','mic8','mic9','mic10']
 var sound=['sound1','sound2','sound3','sound4','sound5','sound6','sound7','sound8','sound9','sound10'];
 var audio=['audio1','audio2','audio3','audio4','audio5','audio6','audio7','audio8','audio9','audio10'];
 
-i=0;
-
+var i=0;
 reset();
 start();
 
 function main(id) {
-	console.log(id);
 	userSound();
 }
 
@@ -21,19 +19,31 @@ function userSound(){
 function addPlaySound(id){
 	var sound = document.getElementById(id);
 	var att = document.createAttribute("onclick");
-	att.value = "playSound('"+id+"')";
+	att.value = "userPlaySound('"+id+"')";
 	sound.setAttributeNode(att);
 }
 
-// Function for character play sound
-function playSound(id) {
-	var audio = document.getElementById('audio');
-	audio.src = 'assets/audio/userSounds/'+id+'.mp3';
-	audio.play();
-	next();
+function userPlaySound(id) {
+	playSound(id)
+	removeUserPlaySound(id);
+	removeMainFunc(mic[i]);
+	inactive(mic[i]);
+	nextWord();
+}
+function removeUserPlaySound(id){
+	var sound = document.getElementById(id);
+	var att = document.createAttribute("onclick");
+	att.value = "playSound('"+id+"')";
+	sound.setAttributeNode(att);	
 }
 
-function next(){
+function playSound(id){
+	var audio = document.getElementById('audio');
+	audio.src = 'assets/audio/userSounds/'+id+'.mp3';
+	audio.play();	
+}
+
+function nextWord(){
 	makeInactive(words[i]);
 	i++;
 	if (i<10) {
@@ -53,15 +63,18 @@ function playOriginalAudio(id) {
 		audio.play();
 }
 
-
-
-
 function addMainFunc(id) {
 	var mic = document.getElementById(id);
 	var att = document.createAttribute("onclick");
 	att.value = "main('"+id+"')";
 	mic.setAttributeNode(att);
 }
+
+function removeMainFunc(id){
+	var mic = document.getElementById(id);
+	mic.removeAttribute('onclick');
+}
+
 
 function makeActive(id){
 	var h1 = document.getElementById(id);
@@ -106,12 +119,14 @@ function originalAudio(){
 	for (var i = 0; i < audio.length; i++) {
 	  	show(audio[i]);
 	}
+	endLesson();
+}
+function endLesson() {
 	var help = document.getElementById('help');
 	var subtitle = document.getElementById('subtitle');
 	help.classList.add('d-none');
 	subtitle.classList.remove('d-none');
 }
-
 function reset(){
 	for (var i = 0; i < audio.length; i++) {
 	  	inactive(mic[i]);

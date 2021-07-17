@@ -51,7 +51,8 @@ h1,h2,h3,h4,h5,h6{
 }
 .subtitle{
     font-family: 'Noto Serif', serif;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    line-height: 27px;
 }
 .help img{
     width:35px;
