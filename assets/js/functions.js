@@ -1,25 +1,28 @@
+// id list for word as 'words', microphone recording as 'mic', user sound as 'sounds' and original sounds as 'audio' 
 var words=['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10'];
-var mic=['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'];
+var mic=  ['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'];
 var sound=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
 var audio=['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10'];
+var player = document.getElementById('player');
 
-var i=0;
-reset();
-start();
+var i=0; //increment
+reset(); // reset for all 
+start(); // start the program
 
+// this method will reset elements
 function reset(){
 	for (var i = 0; i < 10; i++) {
-	  	inactive(mic[i]);
-	  	inactive(sound[i]);
-	  	hide(audio[i]);
+	  	inactive(mic[i]); // inactive microphone icons
+	  	inactive(sound[i]); // inactive user sounds icon
+	  	hide(audio[i]); // hide original sounds icon
 	}
 }
 
 function start() {
 	if(i==0){
-	  wordActive(words[i]);
-	  addRecordingBtn(mic[i]);
-	  active(mic[i]);
+	  wordActive(words[i]); // make first word green as active
+	  addRecordingBtn(mic[i]); // add attribute onmousedown for recording
+	  active(mic[i]); // active for recording buton
 	}
 }
 
@@ -65,7 +68,7 @@ function addPlaySound(id){
 }
 
 function userPlaySound(id) {
-	playSound(id)
+	playUserSound(id)
 	removeUserPlaySound(id);
 	removeRecordingBtn(mic[i]);
 	wordInactive(words[i]);
@@ -76,14 +79,13 @@ function userPlaySound(id) {
 function removeUserPlaySound(id){
 	var sound = document.getElementById(id);
 	var att = document.createAttribute("onclick");
-	att.value = "playSound('"+id+"')";
+	att.value = "playUserSound('"+id+"')";
 	sound.setAttributeNode(att);	
 }
 
-function playSound(id){
-	var audio = document.getElementById('audio');
-	audio.src = 'assets/audio/userSounds/'+id+'.mp3';
-	audio.play();	
+function playUserSound(id){
+	player.src = 'assets/audio/userSounds/'+id+'.mp3';
+	player.play();	
 }
 
 function addRecordingBtn(id){
@@ -111,15 +113,14 @@ function nextWord(){
 		active(mic[i]);
 	}
 	else{
-		originalAudio();
+		activeOriginalAudio();
 	}
 	
 }
 
-function playOriginalAudio(id) {
-	var audio = document.getElementById('audio');	
-		audio.src = 'assets/audio/originalSounds/'+id+'.mp3';
-		audio.play();
+function playOriginalAudio(id) {	
+	player.src = 'assets/audio/originalSounds/'+id+'.mp3';
+	player.play();
 }
 
 function wordActive(id){
@@ -153,8 +154,7 @@ function inactive(id){
 	item.classList.remove('pointer');
 }
 
-
-function originalAudio(){
+function activeOriginalAudio(){
 	for (var i = 0; i < audio.length; i++) {
 	  	show(audio[i]);
 	}
