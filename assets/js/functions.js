@@ -5,6 +5,10 @@ var sound=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
 var audio=['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10'];
 var player = document.getElementById('player');
 
+var recorded_data = [];
+var chunks = [];
+var constraints = { audio: true, video: false }
+
 var i=0; //increment
 reset(); // reset for all 
 start(); // start the program
@@ -16,6 +20,13 @@ function reset(){
 	  	inactive(sound[i]); // inactive user sounds icon
 	  	hide(audio[i]); // hide original sounds icon
 	}
+}
+
+//ask permision for audio 
+window.addEventListener('load',startUp);
+function startUp(){
+  navigator.mediaDevices.getUserMedia(constraints);
+  console.log('media permission allowed');
 }
 
 function start() {
@@ -40,19 +51,44 @@ function recordStop(id) {
 }
 
 function startRecording(){
-	console.log('start Recording');
+	console.log('recording start');
+	navigator.mediaDevices.getUserMedia(constraints).then(audioStream);
+}
+
+function audioStream(stream){
+  console.log('audio streaming');
+  window.stream = stream;
+ 
+  var options = {mimeType:'audio/webm'};
+  try{
+    mediaRecorder = new MediaRecorder(window.stream, options);
+    mediaRecorder.start(100);
+    
+  }
+  catch(e){
+    console.log(e);
+  }
+  
+  mediaRecorder.ondataavailable = function(event) {
+    if (event.data && event.data.size >0) {
+      chunks.push(event.data);
+      console.log(chunks);
+    }
+  };
+  player.srcObject = stream;
+  player.play();
+  
 }
 
 function stopRecording(){
-	console.log('stop Recording');
-	storeRecording();;
-}
-function storeRecording(){
-	console.log('store Recording');
-	
-	setTimeout(function(){
-	    userSound();
-	},0);
+	mediaRecorder.stop();
+	console.log('recording stop');
+	var raw_data = new Blob(chunks,{type:'audio/webm'});
+	recorded_data[i] = URL.createObjectURL(raw_data);
+	player.setAttribute('src','');
+	player.src = null;
+	player.srcObject = null;
+	userSound();
 }
 
 function userSound(){
@@ -74,6 +110,7 @@ function userPlaySound(id) {
 	wordInactive(words[i]);
 	inactive(mic[i]);
 	nextWord();
+	chunks=[];
 }
 
 function removeUserPlaySound(id){
@@ -84,7 +121,7 @@ function removeUserPlaySound(id){
 }
 
 function playUserSound(id){
-	player.src = 'assets/audio/userSounds/'+id+'.mp3';
+	player.src = recorded_data[sound.indexOf(id)];
 	player.play();	
 }
 
