@@ -66,12 +66,34 @@ h1,h2,h3,h4,h5,h6{
     text-align: left;
     color:var(--bs-white);
 }
-.content img{
+
+.mic{
+    padding: 18px;
     width:35px;
     margin-top:26px;
+    background: url('../img/mic.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
-
-
+.speaker-1{
+    padding: 18px;
+    width:35px;
+    margin-top:26px;
+    background: url('../img/speaker-1.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.speaker-2{
+    padding: 18px;
+    width:35px;
+    margin-top:26px;
+    background: url('../img/speaker-2.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
 /****************footer****************/
 
     
