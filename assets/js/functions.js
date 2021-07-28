@@ -127,8 +127,8 @@ function playUserSound(id){
 
 function addRecordingBtn(id){
 	var element = document.getElementById(id);
-	var mousedown = document.createAttribute("onmousedown");
-	var mouseup = document.createAttribute("onmouseup");
+	var mousedown = document.createAttribute("onpointerdown");
+	var mouseup = document.createAttribute("onpointerup");
 	mousedown.value = "recordStart('"+id+"')";
 	element.setAttributeNode(mousedown);
 
