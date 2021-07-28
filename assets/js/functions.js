@@ -39,14 +39,14 @@ function start() {
 
 function recordStart(id) {
 	var element = document.getElementById(id);
-	element.src = 'assets/img/stop.svg';
+	element.style.backgroundImage = 'url(assets/img/stop.svg)';
   	startRecording();
   	inactive(sound[i]);
 }
 
 function recordStop(id) {
 	var element = document.getElementById(id);
-	element.src = 'assets/img/mic.svg';
+	element.style.backgroundImage = 'url(assets/img/mic.svg)';
 	stopRecording();
 }
 
