@@ -54,9 +54,26 @@ h1,h2,h3,h4,h5,h6{
     margin: 10px 0;
     line-height: 27px;
 }
-.help img{
-    width:35px;
-    height:25px;
+.flag{
+    width:40px;
+    height:24px;
+}
+#flag-us{
+    padding:0px 20px;
+    width:40px;
+    margin: 5px;
+    background: url('../img/flag.svg');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size:80px;
+}
+#flag-thai{
+    padding:0px 20px;
+    width:40px;
+    background: url('../img/flag.svg');
+    background-repeat: no-repeat;
+    background-position: -40px 0px;
+    background-size:80px;
 }
 
 /*****************content*****************/
@@ -68,31 +85,31 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .mic{
-    padding: 18px;
-    width:35px;
+    padding: 20px;
+    width:40px;
     margin-top:26px;
-    background: url('../img/mic.svg');
+    background: url('../img/sprites.svg');
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
+    background-position: 0px 0px;
+    background-size: 160px;
 }
 .speaker-1{
-    padding: 18px;
-    width:35px;
+    padding: 20px;
+    width:40px;
     margin-top:26px;
-    background: url('../img/speaker-1.svg');
+    background: url('../img/sprites.svg');
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
+    background-position: -80px 0px;
+    background-size: 160px;
 }
 .speaker-2{
-    padding: 18px;
-    width:35px;
+    padding: 20px;
+    width:40px;
     margin-top:26px;
-    background: url('../img/speaker-2.svg');
+    background: url('../img/sprites.svg');
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
+    background-position: -120px 0px;
+    background-size: 160px;
 }
 /****************footer****************/
 
@@ -117,20 +134,28 @@ h1,h2,h3,h4,h5,h6{
 
 @media (max-width:991px){
     .content h1{
-        font-size:40px;
+        font-size:35px;
     }
-    .content img{
-        width:25px;
-        margin-top: 15px;
+    .mic{
+        padding:15px;
+        width:30px;
+        margin-top:10px;
+        background-position: 0px 0px;
+        background-size: 120px;
     }
-}
 
-@media (max-width:575px){
-    .content h1{
-        font-size:40px;
+    .speaker-1{
+        padding:15px;
+        width:30px;
+        margin-top:10px;
+        background-position: -60px 0px;
+        background-size: 120px;
     }
-    .content img{
-        width:25px;
-        margin-top: 15px;
+    .speaker-2{
+        padding:15px;
+        width:30px;
+        margin-top:10px;
+        background-position: -90px 0px;
+        background-size: 120px;
     }
 }

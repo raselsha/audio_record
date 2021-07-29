@@ -37,16 +37,25 @@ function start() {
 	}
 }
 
+
 function recordStart(id) {
 	var element = document.getElementById(id);
-	element.style.backgroundImage = 'url(assets/img/stop.svg)';
-  	startRecording();
-  	inactive(sound[i]);
+	var screen = window.matchMedia("(max-width:991px)");
+	if (screen.matches) { // If media query matches
+	    element.style.backgroundPosition='-30px';
+	  } else {
+	   element.style.backgroundPosition='-40px';
+	  }
+	
+  startRecording();
+  addRecordingStopBtn(id);
+  inactive(sound[i]);
 }
 
 function recordStop(id) {
 	var element = document.getElementById(id);
-	element.style.backgroundImage = 'url(assets/img/mic.svg)';
+	element.style.backgroundPosition='0px';
+	addRecordingBtn(id);
 	stopRecording();
 }
 
@@ -127,19 +136,21 @@ function playUserSound(id){
 
 function addRecordingBtn(id){
 	var element = document.getElementById(id);
-	var mousedown = document.createAttribute("onpointerdown");
-	var mouseup = document.createAttribute("onpointerup");
-	mousedown.value = "recordStart('"+id+"')";
-	element.setAttributeNode(mousedown);
+	var onclick = document.createAttribute("onclick");
+	onclick.value = "recordStart('"+id+"')";
+	element.setAttributeNode(onclick);
+}
 
-	mouseup.value = "recordStop('"+id+"')";
-	element.setAttributeNode(mouseup);
+function addRecordingStopBtn(id){
+	var element = document.getElementById(id);
+	var onclick = document.createAttribute("onclick");
+	onclick.value = "recordStop('"+id+"')";
+	element.setAttributeNode(onclick);
 }
 
 function removeRecordingBtn(id){
 	var element = document.getElementById(id);
-	element.removeAttribute('onmouseup');
-	element.removeAttribute('onmousedown');
+	element.removeAttribute('onclick');
 }
 
 function nextWord(){
