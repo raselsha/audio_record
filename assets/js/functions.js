@@ -70,6 +70,7 @@ function recording(){
 	  mediaRecorder.ondataavailable = function(event) {
 	    if (event.data && event.data.size >0) {
 	      chunks.push(event.data);
+	      console.log(chunks);
 	    }
 	  };
 	  player.srcObject = stream;
@@ -81,7 +82,6 @@ function recording(){
 
 function recordStop(id) {
 	console.log('recording stop');
-	console.log(chunks);
 	var element = document.getElementById(id);
 	element.style.backgroundPosition='0px';
 	addRecordingBtn(id);
