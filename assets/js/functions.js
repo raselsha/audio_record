@@ -26,7 +26,7 @@ function reset(){
 window.addEventListener('load',startUp);
 function startUp(){
   navigator.mediaDevices.getUserMedia(constraints);
-  console.log('media permission allowed');
+  console.log('media permission ask');
 }
 
 function start() {
@@ -73,6 +73,7 @@ function recording(){
 	      console.log(chunks);
 	    }
 	  };
+	  player.volume = 0;
 	  player.srcObject = stream;
 	  player.play();
 	  
@@ -121,6 +122,7 @@ function removeUserPlaySound(id){
 
 function playUserSound(id){
 	player.src = recorded_data[sound.indexOf(id)];
+	player.volume = 1;
 	player.play();	
 }
 
