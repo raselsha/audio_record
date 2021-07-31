@@ -6,6 +6,7 @@ var audio=['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10'];
 var player = document.getElementById('player');
 
 var recorded_data = [];
+var audioTrack = new WebAudioTrack();
 
 var constraints = { audio: true, video: false }
 
@@ -23,11 +24,11 @@ function reset(){
 }
 
 //ask permision for audio 
-window.addEventListener('load',startUp);
-function startUp(){
-  navigator.mediaDevices.getUserMedia(constraints);
-  console.log('media permission ask');
-}
+// window.addEventListener('load',startUp);
+// function startUp(){
+//   navigator.mediaDevices.getUserMedia(constraints);
+//   console.log('media permission ask');
+// }
 
 function start() {
 	if(i==0){
@@ -47,7 +48,8 @@ function recordStart(id) {
 	   element.style.backgroundPosition='-40px';
 	  }
 	
-  recording();
+  // recording();
+  audioTrack.startRecording();
   addRecordingStopBtn(id);
   inactive(sound[i]);
 }
@@ -86,12 +88,10 @@ function recordStop(id) {
 	var element = document.getElementById(id);
 	element.style.backgroundPosition='0px';
 	addRecordingBtn(id);
-	mediaRecorder.stop();
-	var raw_data = new Blob(chunks,{type:'audio/webm'});
-	recorded_data[i] = URL.createObjectURL(raw_data);
-	player.setAttribute('src','');
-	player.src = null;
-	player.srcObject = null;
+	audioTrack.stopRecording(function(){
+		recorded_data[i] = audioTrack.getBlobSrc();
+		console.log(recorded_data[i]);
+	});
 	active(sound[i]);
 	addPlaySoundBtn(sound[i]);
 }
