@@ -3,14 +3,12 @@ var words=['w1','w2','w3','w4','w5','w6','w7','w8','w9','w10'];
 var mic=  ['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'];
 var sound=['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
 var audio=['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10'];
+
 var player = document.getElementById('player');
-
 var recorded_data = [];
-var audioTrack = new WebAudioTrack();
-var constraints = { audio: true, video: false }
-
 var i=0; //increment
-reset(); // reset for all 
+
+reset(); // reset page for all 
 start(); // start the program
 
 // this method will reset elements
@@ -20,13 +18,6 @@ function reset(){
 	  	inactive(sound[i]); // inactive user sounds icon
 	  	hide(audio[i]); // hide original sounds icon
 	}
-}
-
-//ask permision for audio 
-window.addEventListener('load',startUp);
-function startUp(){
-  navigator.mediaDevices.getUserMedia(constraints);
-  console.log('media permission ask');
 }
 
 function start() {
@@ -46,13 +37,25 @@ function recordStart(id) {
 	  } else {
 	   element.style.backgroundPosition='-40px';
 	  }
-	
-  audioTrack.startRecording();
+	//+++++++++ recording funciton +++++++++
+  // recording(); // manual function for record audio stream
+  rtcRecording(); // adapter recording;
+  
   addRecordingStopBtn(id);
   inactive(sound[i]);
 }
 
+//adapter reacorder
+function rtcRecording(){
+	const audioStream = async function(stream){
+		config = {type:'audio',mimeType:'audio/webm'}
+		recorder = RecordRTC(stream,config);
+		recorder.startRecording();
+	};
+	navigator.mediaDevices.getUserMedia({video: true,audio: true}).then(audioStream);
+}
 
+// manual recorder
 function recording(){
 	console.log('recording start');
 	const audioStream = function(stream){
@@ -82,7 +85,6 @@ function recording(){
 }
 
 function recordStop(id) {
-	console.log('recording stop');
 	var element = document.getElementById(id);
 	element.style.backgroundPosition='0px';
 	addRecordingBtn(id);
@@ -92,10 +94,16 @@ function recordStop(id) {
 	// player.setAttribute('src','');
 	// player.src = null;
 	// player.srcObject = null;
-	audioTrack.stopRecording(function() {
-		recorded_data[i] = audioTrack.getBlobSrc();
-		console.log(recorded_data[i]);
+	// audioTrack.stopRecording(function(blobURL) {
+	// 	recorded_data[i] = blobURL;
+	// 	console.log(recorded_data[i]);
+	// });
+
+	recorder.stopRecording(function() {
+		recorded_data[i] = recorder.toURL();
+	  console.log(recorded_data[i]);
 	});
+
 	active(sound[i]);
 	addPlaySoundBtn(sound[i]);
 }
