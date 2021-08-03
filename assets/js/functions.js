@@ -76,7 +76,7 @@ function recordStop(id) {
 
 	setTimeout(function(){
 		nextWord();	
-	},500);
+	},100);
 	
 }
 
@@ -134,7 +134,6 @@ function playOriginalAudio(id) {
 function wordActive(id){
 	var h1 = document.getElementById(id);
 	h1.classList.add('text-green');
-	h1.style.transition = "all 0.5s";
 }
 
 function wordInactive(id){
