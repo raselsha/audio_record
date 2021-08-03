@@ -6,6 +6,7 @@ var audio=['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10'];
 
 var player = document.getElementById('player');
 var recorded_data = [];
+var j=0; //increment
 var i=0; //increment
 
 reset(); // reset page for all 
@@ -39,102 +40,55 @@ function recordStart(id) {
 	  }
 	//+++++++++ recording funciton +++++++++
   // recording(); // manual function for record audio stream
-  rtcRecording(); // adapter recording;
-  
+  recording(id); // adapter recording;
   addRecordingStopBtn(id);
   inactive(sound[i]);
 }
 
 //adapter reacorder
-function rtcRecording(){
+function recording(){
 	const audioStream = async function(stream){
 		config = {type:'audio',mimeType:'audio/webm'}
 		recorder = RecordRTC(stream,config);
 		recorder.startRecording();
+
 	};
+
 	navigator.mediaDevices.getUserMedia({video: true,audio: true}).then(audioStream);
 }
 
-// manual recorder
-function recording(){
-	console.log('recording start');
-	const audioStream = function(stream){
-	  console.log('audio streaming');
-	  chunks = [];	 
-	  const options = {mimeType:'audio/webm'};
-	  try{
-	    mediaRecorder = new MediaRecorder(stream, options);
-	    mediaRecorder.start(100);
-	  }
-	  catch(e){
-	    console.log(e);
-	  }
-	  
-	  mediaRecorder.ondataavailable = function(event) {
-	    if (event.data && event.data.size >0) {
-	      chunks.push(event.data);
-	      console.log(chunks);
-	    }
-	  };
-	  player.volume = 0;
-	  player.srcObject = stream;
-	  player.play();
-	  
-	}
-	navigator.mediaDevices.getUserMedia(constraints).then(audioStream);
-}
 
 function recordStop(id) {
 	var element = document.getElementById(id);
 	element.style.backgroundPosition='0px';
-	addRecordingBtn(id);
-	// mediaRecorder.stop();
-	// var raw_data = new Blob(chunks,{type:'audio/webm'});
-	// recorded_data[i] = URL.createObjectURL(raw_data);
-	// player.setAttribute('src','');
-	// player.src = null;
-	// player.srcObject = null;
-	// audioTrack.stopRecording(function(blobURL) {
-	// 	recorded_data[i] = blobURL;
-	// 	console.log(recorded_data[i]);
-	// });
-
+	
 	recorder.stopRecording(function() {
 		recorded_data[i] = recorder.toURL();
-	  console.log(recorded_data[i]);
+	    console.log("audio["+i+"]"+recorded_data[i]);
 	});
 
-	active(sound[i]);
 	addPlaySoundBtn(sound[i]);
-}
+	active(sound[i]);
 
+	removeRecordingBtn(mic[i]);
+	wordInactive(words[i]);
+	inactive(mic[i]);
+
+	setTimeout(function(){
+		nextWord();	
+	},500);
+	
+}
 
 function addPlaySoundBtn(id){
 	var sound = document.getElementById(id);
 	var att = document.createAttribute("onclick");
-	att.value = "userPlaySound('"+id+"')";
-	sound.setAttributeNode(att);
-}
-
-function userPlaySound(id) {
-	playUserSound(id)
-	removeUserPlaySound(id);
-	removeRecordingBtn(mic[i]);
-	wordInactive(words[i]);
-	inactive(mic[i]);
-	nextWord();
-}
-
-function removeUserPlaySound(id){
-	var sound = document.getElementById(id);
-	var att = document.createAttribute("onclick");
 	att.value = "playUserSound('"+id+"')";
-	sound.setAttributeNode(att);	
+	sound.setAttributeNode(att);
 }
 
 function playUserSound(id){
 	player.src = recorded_data[sound.indexOf(id)];
-	player.volume = 1;
 	player.play();	
 }
 
@@ -167,7 +121,7 @@ function nextWord(){
 	else{
 		 setTimeout(function(){
 			activeOriginalAudio();
-		},2000);
+		},1500);
 	}
 	
 }
@@ -180,6 +134,7 @@ function playOriginalAudio(id) {
 function wordActive(id){
 	var h1 = document.getElementById(id);
 	h1.classList.add('text-green');
+	h1.style.transition = "all 0.5s";
 }
 
 function wordInactive(id){
